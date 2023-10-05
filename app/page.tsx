@@ -1,94 +1,40 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import type { CSSProperties } from 'react';
+import Image from 'next/image';
+import fonts from '@/styles/fonts';
+import styles from './page.module.css';
 
 export default function Home() {
+  const styleH1: CSSProperties = {
+    ...fonts.zapfCalligraphic.style,
+    fontSize: '72px',
+  }
+
+  const styleH2: CSSProperties = {
+    ...fonts.optimaNova.style,
+    fontSize: '36px',
+  }
+
+  const content = {
+    title: `Hi, I'm Becca.`,
+    subtitle: `I'm a full stack developer. I'm also in the process of building this site.`,
+
+    paragraphs: [
+      `You can check out what's here so far. I'm focusing on bare-bones stuff and documenting my recently new or in-progress projects for now.`,
+      `You can also click the Github icon to get to know me and my code better.`,
+      `I'd be pretty stoked if you checked out the resume link up there too. It's actually a webpage I built, designed for print-to-PDF. Much better than the word-processing experience!`,
+    ]
+  }
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <h1 style={styleH1}>{content.title}</h1>
+      <h2 style={styleH2}>{content.subtitle}</h2>
+      <div className={styles.paragraphs}>
+        {
+          content.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))
+        }
       </div>
     </main>
   )

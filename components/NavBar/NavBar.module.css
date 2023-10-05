@@ -1,0 +1,42 @@
+.NavBar {
+
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 1px solid black;
+    
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4rem;
+}
+
+.internal {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.external {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.NavBar a {
+    padding: 0.5rem;
+    text-decoration: none;
+
+    --hover-color: hsl(0, 0%, 40%);
+    color: black;
+    border-radius: 0.5rem;
+}
+
+.NavBar [data-page='current'] {
+    text-decoration: underline;
+}
+
+.NavBar :hover {
+    color: var(--hover-color);
+}
