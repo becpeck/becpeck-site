@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial;
+    font-weight: normal;
+}
+
+/* center and layout for print */
+:root {
+    display: flex;
+    justify-content: center;
+}
+body {
+    font-size: 10pt;
+    height: 10in;
+    width: 7.5in;
+    margin: 0.5in 0;
+}
+
+/* heading styles */
+h1 {
+    font-size: 18pt;
+    font-weight: bold;
+}
+h2 {
+    font-size: 14pt;
+}
+h3 {
+    font-size: 12pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1.5pt solid black;
+    padding-bottom: 1.5pt;
+    margin: 1em 0;
+}
+h4 {
+    font-size: 12pt;
+}
+h5 {
+    font-size: 11pt;
+    font-weight: bold;
+}
+h6 {
+    font-size: 11pt;
+}
+
+/* flexbox layout */
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 0.875in;
+    gap: 0.5in;
+}
+#header-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#header-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-style: normal;
+}
+main {
+    display: flex;
+    flex-flow: column wrap;
+    column-gap: 0.5in;
+    max-height: calc(100% - 0.875in);
+}
+main > section {
+    width: calc(0.5 * (100% - 0.5in));
+}
+
+header {
+    margin-bottom: 1em;
+}
+header h1, header h2, header h4 {
+    margin: 0;
+}
+main h4, h5, h6 {
+    margin: 0;
+}
+section h4, section h5, section h6 {
+    margin-bottom: 2pt;
+}
+.text-group {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+.text-group a {
+    font-weight: bold;
+}
+.icon-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.35em;
+}
+ul {
+    padding-inline-start: 1.2em;
+    margin-block-start: 0.5em;
+    margin-block-end: 0;
+}
+.subsection {
+    margin-block-end: 1em;
+}
+
+/* skill tags */
+#skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7pt;
+}
+#skills-list span {
+    border: 1px solid black;
+    border-radius: 5pt;
+    padding: 4px;
+}
