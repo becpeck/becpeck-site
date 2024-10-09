@@ -33,6 +33,7 @@ export default function NavBar() {
             <div className={styles.internal}>
                 <NavLink href='/projects' style={linkStyle} text='PROJECTS' />
                 <NavLink href='/files/c3a37847-6f64-4f48-a6fe-f32332eb1df6.html' style={linkStyle} text='RESUME' target='_blank' rel='noopener noreferrer'/>
+                <NavLink href='/contact' style={linkStyle} text="CONTACT" />
             </div>
             <div className={styles.external}>
                 <Link href='https://www.github.com/becpeck'>
