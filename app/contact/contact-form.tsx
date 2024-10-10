@@ -1,8 +1,7 @@
 "use client";
 
-import { FormEvent, useState, type CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 import fonts from "@/styles/fonts";
-import sendEmail from "@/utils/send-email";
 
 const styleForm: CSSProperties = {
   width: "100%",
@@ -39,23 +38,22 @@ const styleButton: CSSProperties = {
 };
 
 export interface ContactFormData {
-    name: string;
-    email: string;
-    message: string;
+  name: string;
+  email: string;
+  message: string;
 }
 
-export default function ContactForm() {
+export default function ContactForm({
+  sendEmail,
+}: {
+  sendEmail: (data: ContactFormData) => void;
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const onSubmit = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-    sendEmail({ name, email, message })
-  }
-
   return (
-    <form style={styleForm} onSubmit={onSubmit}>
+    <form style={styleForm} action={() => sendEmail({ name, email, message })}>
       <div>
         <label htmlFor="name" style={styleLabel}>
           Name
