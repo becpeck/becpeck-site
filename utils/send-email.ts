@@ -19,6 +19,16 @@ export default async function sendEmail(data: ContactFormData) {
     cc: data.email,
     subject: `Contact form submission by ${data.name}`,
     text: data.message,
+    ...(data.fileBase64
+      ? {
+          attachments: [
+            {
+              path: data.fileBase64,
+              filename: data.fileName,
+            },
+          ],
+        }
+      : {}),
   };
 
   try {

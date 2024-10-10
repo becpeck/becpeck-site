@@ -62,6 +62,8 @@ export interface ContactFormData {
   name: string;
   email: string;
   message: string;
+  fileName: string | undefined;
+  fileBase64: string | undefined;
 }
 
 export default function ContactForm({
@@ -72,15 +74,29 @@ export default function ContactForm({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [fileName, setFileName] = useState<string | null>(null);
+  const [fileName, setFileName] = useState<string | undefined>(undefined);
+  const [fileBase64, setFileBase64] = useState<string | undefined>(undefined);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    setFileName(file ? file.name : null);
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setFileBase64(String(reader.result));
+      };
+      setFileName(file.name);
+    } else {
+      setFileBase64(undefined);
+      setFileName(undefined);
+    }
   };
 
   return (
-    <form style={styleForm} action={() => sendEmail({ name, email, message })}>
+    <form
+      style={styleForm}
+      action={() => sendEmail({ name, email, message, fileName, fileBase64 })}
+    >
       <div>
         <label htmlFor="name" style={styleLabel}>
           Name
